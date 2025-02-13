@@ -1,13 +1,9 @@
- import {Link} from 'react-router-dom'
+import { useParams } from 'react-router-dom'; 
+
+
 export default function StarshipCard() {
-    return (
-        <nav>
-            <Link to='/'>
-                <p>Services</p>
-            </Link>
-            <Link to='/profile'>
-                <p>StarWars Ship </p>
-            </Link>
-        </nav>
-    )
+    const { starships } = useParams();
+   
+    console.log (params)
+    return <h1></h1>
 }

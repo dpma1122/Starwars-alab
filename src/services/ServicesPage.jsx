@@ -1,20 +1,29 @@
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
 export default function ServicesPage() {
-  return <h1>Serivces Page</h1>
+  const [spaceship, setSpaceship] = useState(null); 
+  const { symbol } = useParams();
 }
 
+useEffect(() => {
+  async function (() => {
+    try {
+      const url = 'https://swapi.dev/api';
+      const response = await fetch(url);
 
-// const BASE_URL = 'https://swapi.dev/api';
- 
-// export async function getAllStarships() {
-//   try {
-//     const response = await fetch(`${BASE_URL}/starships/`);
-//     if (!response.ok) {
-//       throw new Error('Failed to get starships');
-//     }
-//     const data = await response.json();
-//     return data.results;
-//   } catch (error) {
-//     console.error(error);
-//     return [];
-//   }
-// }
+      const data = await response.json();
+      setSpaceship(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  getSpaceship();
+}, []);
+
+return spaceship ? (
+  <div>
+    <h2>{Loading}
+    </h2>
+  </div>
+)
